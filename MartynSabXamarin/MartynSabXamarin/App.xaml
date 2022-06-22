@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MartynSabXamarin.App">
+    <Application.Resources>
+        <Style x:Key="lbStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontFamily" Value="FranciscoExpBold"/>
+        </Style>
+        <Style x:Key="lbStyle2" TargetType="Label">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="#d5a91e"/>
+            <Setter Property="FontFamily" Value="FranciscoExpBold"/>
+        </Style>
+        <Style x:Key="btnStyle" TargetType="Button">
+            <Setter Property="HeightRequest" Value="10"/>
+            <Setter Property="WidthRequest" Value="10"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="ImageSource" Value="next"/>
+        </Style>
+        <Style x:Key="imgStyle" TargetType="Image">
+            <Setter Property="WidthRequest" Value="15"/>
+            <Setter Property="HeightRequest" Value="15"/>
+            <Setter Property="Source" Value="next"/>
+            <Style.Triggers>
+                <Trigger TargetType="Image" Property="IsFocused" Value="True">
+                    <Setter Property="Opacity" Value="0.3"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="imgStyle2" TargetType="Image">
+            <Setter Property="WidthRequest" Value="15"/>
+            <Setter Property="HeightRequest" Value="15"/>
+            <Setter Property="Source" Value="next"/>
+            <Style.Triggers>
+                <Trigger TargetType="Image" Property="IsFocused" Value="True">
+                    <Setter Property="Opacity" Value="0.3"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="textBoxStyle" TargetType="Entry">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontFamily" Value="FranciscoExpBold"/>
+        </Style>
+        
+    </Application.Resources>
+</Application>

@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MartynSabXamarin.ItemPage"
+             BackgroundColor="Black"
+             >
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <ScrollView
+                Grid.Row="1"
+                >
+                <StackLayout
+                x:Name="actionsPanel"
+            
+                
+            >
+
+                </StackLayout>
+            </ScrollView>
+            <StackLayout VerticalOptions="Center"
+                        >
+                <Label
+                    FontSize="30"
+                    Margin="10"
+                    FontFamily="FranciscoBold"
+                    x:Name="curentUserInfoLB"
+                Style="{StaticResource lbStyle}"
+                />
+            </StackLayout>
+            
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>
