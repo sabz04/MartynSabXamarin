@@ -14,24 +14,53 @@ namespace MartynSabXamarin
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ItemPage : ContentPage
     {
+        public static ItemPage page;
         Style lbStyle = (Style)Application.Current.Resources["lbStyle"];
         Style lbStyle2 = (Style)Application.Current.Resources["lbStyle2"];
         Style imgStyle = (Style)Application.Current.Resources["imgStyle"];
+        public bool likeFlag = true;
         public ItemPage()
         {
             InitializeComponent();
+            
             curentUserInfoLB.Text = $"Справочник по C#";
             LoadArticles();
+            var tapImg = new TapGestureRecognizer();
+            page = this;
+            tapImg.Tapped += (s, e) => {
+                if (likeFlag)
+                {
+                    var articles = Database.SelectArticles();
+                    actionsPanel.Children.Clear();
+                    LoadArticles(articles);
+                    likeFlag = false;
+                    return;
+
+                }
+                if (!likeFlag)
+                {
+                    actionsPanel.Children.Clear();
+                    LoadArticles();
+                    likeFlag = true;
+                    return;
+                }
+
+
+            };
+            likedPanel.GestureRecognizers.Add(tapImg);
         }
+        
         public ItemPage(string currentUser)
         {
             InitializeComponent();
             curentUserInfoLB.Text = $"Справочник по C#";
             LoadArticles();
+            
         }
 
-        private void LoadArticles()
+        public void LoadArticles()
         {
+            actionsPanel.Children.Clear();
             Article.articles = new List<Article>
             {
                 new Article
@@ -196,7 +225,7 @@ namespace MartynSabXamarin
                    Title="Глава 27. Что нового",
                    Url="https://metanit.com/sharp/tutorial/23.1.php",
                 },
-                    
+
             };
             foreach (var action in Article.articles)
             {
@@ -220,15 +249,46 @@ namespace MartynSabXamarin
                     Margin = new Thickness(10, 5, 0, 5),
                     Text = action.Title
                 });
-                wrpPanel.Children.Add(new Image {
+                wrpPanel.Children.Add(new Image
+                {
                     Style = imgStyle,
                 });
                 actionsPanel.Children.Add(wrpPanel);
             }
-           
-            
-            
-            
+
+        }
+        public void LoadArticles(List<Article> articles)
+        {
+            actionsPanel.Children.Clear();
+            foreach (var action in articles)
+            {
+                StackLayout wrpPanel = new StackLayout
+                {
+                    Orientation = StackOrientation.Horizontal,
+                    VerticalOptions = LayoutOptions.Center,
+                };
+                var tapWrp = new TapGestureRecognizer();
+                tapWrp.Tapped += (s, e) =>
+                {
+
+                    Navigation.PushModalAsync(new MainPage(
+                        action.Url
+                        ));
+                };
+                wrpPanel.GestureRecognizers.Add(tapWrp);
+                wrpPanel.Children.Add(new Label
+                {
+                    Style = lbStyle2,
+                    Margin = new Thickness(10, 5, 0, 5),
+                    Text = action.Title
+                });
+                wrpPanel.Children.Add(new Image
+                {
+                    Style = imgStyle,
+                });
+                actionsPanel.Children.Add(wrpPanel);
+            }
+
         }
     }
 }

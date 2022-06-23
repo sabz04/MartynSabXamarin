@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MartynSabXamarin.Models;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -11,7 +12,7 @@ namespace MartynSabXamarin
         public App()
         {
             InitializeComponent();
-
+            Database.CreateDatabase();
             MainPage = new ItemPage();
         }
         public static Page GetMainPage()
