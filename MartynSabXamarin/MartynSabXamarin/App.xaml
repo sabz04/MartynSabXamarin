@@ -6,12 +6,12 @@
         <Style x:Key="lbStyle" TargetType="Label">
             <Setter Property="FontSize" Value="17"/>
             <Setter Property="TextColor" Value="White"/>
-            <Setter Property="FontFamily" Value="FranciscoExpBold"/>
+            <Setter Property="FontFamily" Value="Francisco"/>
         </Style>
         <Style x:Key="lbStyle2" TargetType="Label">
             <Setter Property="FontSize" Value="18"/>
             <Setter Property="TextColor" Value="#d5a91e"/>
-            <Setter Property="FontFamily" Value="FranciscoExpBold"/>
+            <Setter Property="FontFamily" Value="Francisco"/>
         </Style>
         <Style x:Key="btnStyle" TargetType="Button">
             <Setter Property="HeightRequest" Value="10"/>
